@@ -1,3 +1,7 @@
+// Copyright (C) 2022-2026 Jean-Francois SMIGIELSKI
+//
+// SPDX-License-Identifier: MIT
+
 package utils
 
 import (

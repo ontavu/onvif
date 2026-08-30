@@ -1,6 +1,8 @@
+// Copyright (C) 2022-2026 Jean-Francois SMIGIELSKI
+//
+// SPDX-License-Identifier: MIT
+
 // Code generated : DO NOT EDIT.
-// Copyright (c) 2022 Jean-Francois SMIGIELSKI
-// Distributed under the MIT License
 
 package ptz
 

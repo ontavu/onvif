@@ -1,5 +1,6 @@
-// Copyright (c) 2022 Jean-Francois SMIGIELSKI
-// Distributed under the MIT License
+// Copyright (C) 2022-2026 Jean-Francois SMIGIELSKI
+//
+// SPDX-License-Identifier: MIT
 
 package main
 

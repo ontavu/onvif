@@ -1,3 +1,7 @@
+// Copyright (C) 2022-2026 Jean-Francois SMIGIELSKI
+//
+// SPDX-License-Identifier: MIT
+
 package main
 
 import (
@@ -19,9 +23,11 @@ type CodegenSdkEnv struct {
 }
 
 func codegenSdk(ctx context.Context, pkg, source string) error {
-	const mainTemplate = `// Code generated : DO NOT EDIT.
-// Copyright (c) 2022 Jean-Francois SMIGIELSKI
-// Distributed under the MIT License
+	const mainTemplate = `// Copyright (C) 2022-2026 Jean-Francois SMIGIELSKI
+//
+// SPDX-License-Identifier: MIT
+
+// Code generated : DO NOT EDIT.
 
 package {{.Package}}
 

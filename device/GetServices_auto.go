@@ -27,7 +27,7 @@ func Call_GetServices(ctx context.Context, dev *networking.Client, request GetSe
 	if err != nil {
 		return reply.Body.GetServicesResponse, err
 	} else {
-		err = networking.ReadAndParse(ctx, httpReply, &reply, "GetServices")
+		err = networking.ReadAndParse(httpReply, &reply, "GetServices")
 		return reply.Body.GetServicesResponse, err
 	}
 }

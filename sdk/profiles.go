@@ -68,7 +68,7 @@ func (p *ProfileS) FetchMediaProfiles(ctx context.Context) MediaProfiles {
 
 	profiles, err := media.Call_GetProfiles(ctx, p.client, media.GetProfiles{})
 	if err != nil {
-		Logger.Trace().Err(err).Str("rpc", "GetProfiles").Msg("profile")
+		rpcFailure(p.client, err, "GetProfiles").Msg("profile")
 		return out
 	}
 
@@ -127,13 +127,13 @@ func (p *ProfileS) FetchMediaProfileUris(ctx context.Context, protocol onvif.Tra
 	if uris, err := media.Call_GetStreamUri(ctx, p.client, streamRequest); err == nil {
 		out.Stream = uris.MediaUri
 	} else {
-		Logger.Trace().Err(err).Str("rpc", "GetStreamUri").Msg("profile")
+		rpcFailure(p.client, err, "GetStreamUri").Msg("profile")
 	}
 
 	if uris, err := media.Call_GetSnapshotUri(ctx, p.client, media.GetSnapshotUri{ProfileToken: token}); err == nil {
 		out.Snapshot = uris.MediaUri
 	} else {
-		Logger.Trace().Err(err).Str("rpc", "GetSnapshotUri").Msg("profile")
+		rpcFailure(p.client, err, "GetSnapshotUri").Msg("profile")
 	}
 
 	return out
@@ -145,7 +145,7 @@ func (p *ProfileS) FetchMediaProfile(ctx context.Context, profileToken onvif.Ref
 	if profile, err := media.Call_GetProfile(ctx, p.client, media.GetProfile{ProfileToken: profileToken}); err == nil {
 		out.Profile = profile.Profile
 	} else {
-		Logger.Trace().Err(err).Str("rpc", "GetProfile").Msg("profile")
+		rpcFailure(p.client, err, "GetProfile").Msg("profile")
 	}
 
 	out.Uris = p.FetchMediaProfileUris(ctx, ProtocolRTSP, profileToken, StreamTypeDefault)
@@ -169,7 +169,7 @@ func (p *ProfileS) loadProfilePTZ(ctx context.Context, profileToken, ptzConfigTo
 		if x, err := ptz.Call_GetStatus(ctx, p.client, ptz.GetStatus{ProfileToken: profileToken}); err == nil {
 			out.Status = x.PTZStatus
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetStatus").Msg("profile")
+			rpcFailure(p.client, err, "GetStatus").Msg("profile")
 		}
 	})
 
@@ -179,7 +179,7 @@ func (p *ProfileS) loadProfilePTZ(ctx context.Context, profileToken, ptzConfigTo
 				ptz.GetConfiguration{PTZConfigurationToken: ptzConfigToken}); err == nil {
 				out.Configuration = x.PTZConfiguration
 			} else {
-				Logger.Trace().Err(err).Str("rpc", "GetConfiguration").Msg("profile")
+				rpcFailure(p.client, err, "GetConfiguration").Msg("profile")
 			}
 		})
 
@@ -188,7 +188,7 @@ func (p *ProfileS) loadProfilePTZ(ctx context.Context, profileToken, ptzConfigTo
 				ptz.GetConfigurationOptions{ConfigurationToken: ptzConfigToken}); err == nil {
 				out.Options = x.PTZConfigurationOptions
 			} else {
-				Logger.Trace().Err(err).Str("rpc", "GetConfigurationOptions").Msg("profile")
+				rpcFailure(p.client, err, "GetConfigurationOptions").Msg("profile")
 			}
 		})
 	}
@@ -197,7 +197,7 @@ func (p *ProfileS) loadProfilePTZ(ctx context.Context, profileToken, ptzConfigTo
 		if x, err := ptz.Call_GetPresets(ctx, p.client, ptz.GetPresets{ProfileToken: profileToken}); err == nil {
 			out.Preset = x.Preset
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetPresets").Msg("profile")
+			rpcFailure(p.client, err, "GetPresets").Msg("profile")
 		}
 	})
 
@@ -205,7 +205,7 @@ func (p *ProfileS) loadProfilePTZ(ctx context.Context, profileToken, ptzConfigTo
 		if x, err := ptz.Call_GetPresetTours(ctx, p.client, ptz.GetPresetTours{ProfileToken: profileToken}); err == nil {
 			out.PresetTour = x.PresetTour
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetPresetTours").Msg("profile")
+			rpcFailure(p.client, err, "GetPresetTours").Msg("profile")
 		}
 	})
 
@@ -224,7 +224,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleMetadata = append(out.CompatibleMetadata, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleMetadataConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleMetadataConfigurations").Msg("profile")
 		}
 	})
 
@@ -234,7 +234,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleVideoSources = append(out.CompatibleVideoSources, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleVideoSourceConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleVideoSourceConfigurations").Msg("profile")
 		}
 	})
 
@@ -244,7 +244,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleVideoEncoders = append(out.CompatibleVideoEncoders, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleVideoEncoderConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleVideoEncoderConfigurations").Msg("profile")
 		}
 	})
 
@@ -254,7 +254,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleVideoAnalytics = append(out.CompatibleVideoAnalytics, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleVideoAnalyticsConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleVideoAnalyticsConfigurations").Msg("profile")
 		}
 	})
 
@@ -264,7 +264,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleAudioSources = append(out.CompatibleAudioSources, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleAudioSourceConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleAudioSourceConfigurations").Msg("profile")
 		}
 	})
 
@@ -274,7 +274,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleAudioEncoders = append(out.CompatibleAudioEncoders, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleAudioEncoderConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleAudioEncoderConfigurations").Msg("profile")
 		}
 	})
 
@@ -284,7 +284,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleAudioOutputs = append(out.CompatibleAudioOutputs, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleAudioOutputConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleAudioOutputConfigurations").Msg("profile")
 		}
 	})
 
@@ -295,7 +295,7 @@ func (p *ProfileS) loadProfileMedia(ctx context.Context, profileToken onvif.Refe
 				out.CompatibleAudioDecoders = append(out.CompatibleAudioDecoders, x.Token)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCompatibleAudioDecoderConfigurations").Msg("profile")
+			rpcFailure(p.client, err, "GetCompatibleAudioDecoderConfigurations").Msg("profile")
 		}
 	})
 

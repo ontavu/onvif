@@ -93,7 +93,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if capa, err := device.Call_GetCapabilities(ctx, p.client, device.GetCapabilities{Category: "All"}); err == nil {
 			out.Capabilities = &capa.Capabilities
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCapabilities").Msg("device")
+			rpcFailure(p.client, err, "GetCapabilities").Msg("device")
 		}
 	})
 
@@ -101,7 +101,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if caps, err := device.Call_GetServiceCapabilities(ctx, p.client, device.GetServiceCapabilities{}); err == nil {
 			out.ServiceCapabilities = &caps.Capabilities
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetServiceCapabilities").Msg("device")
+			rpcFailure(p.client, err, "GetServiceCapabilities").Msg("device")
 		}
 	})
 
@@ -109,7 +109,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if info, err := device.Call_GetDeviceInformation(ctx, p.client, device.GetDeviceInformation{}); err == nil {
 			out.Information = &info
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDeviceInformation").Msg("device")
+			rpcFailure(p.client, err, "GetDeviceInformation").Msg("device")
 		}
 	})
 
@@ -117,7 +117,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if srvs, err := device.Call_GetServices(ctx, p.client, device.GetServices{}); err == nil {
 			out.Service = srvs.Service
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetServices").Msg("device")
+			rpcFailure(p.client, err, "GetServices").Msg("device")
 		}
 	})
 
@@ -125,7 +125,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if info, err := device.Call_GetSystemDateAndTime(ctx, p.client, device.GetSystemDateAndTime{}); err == nil {
 			out.SystemDateAndTime = &info.SystemDateAndTime
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetSystemDateAndTime").Msg("device")
+			rpcFailure(p.client, err, "GetSystemDateAndTime").Msg("device")
 		}
 	})
 
@@ -133,7 +133,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if scopes, err := device.Call_GetScopes(ctx, p.client, device.GetScopes{}); err == nil {
 			out.Scopes = scopes.Scopes
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetScopes").Msg("device")
+			rpcFailure(p.client, err, "GetScopes").Msg("device")
 		}
 	})
 
@@ -141,7 +141,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if url, err := device.Call_GetWsdlUrl(ctx, p.client, device.GetWsdlUrl{}); err == nil {
 			out.WsdlUrl = string(url.WsdlUrl)
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetWsdlUrl").Msg("device")
+			rpcFailure(p.client, err, "GetWsdlUrl").Msg("device")
 		}
 	})
 
@@ -149,7 +149,7 @@ func (p *ProfileS) FetchDeviceDescriptor(ctx context.Context) DeviceDescriptor {
 		if er, err := device.Call_GetEndpointReference(ctx, p.client, device.GetEndpointReference{}); err == nil {
 			out.EndpointReference = er.GUID
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetEndpointReference").Msg("device")
+			rpcFailure(p.client, err, "GetEndpointReference").Msg("device")
 		}
 	})
 
@@ -166,7 +166,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if info, err := device.Call_GetGeoLocation(ctx, p.client, device.GetGeoLocation{}); err == nil {
 			out.Location = &info.Location
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetGeoLocation").Msg("device")
+			rpcFailure(p.client, err, "GetGeoLocation").Msg("device")
 		}
 	})
 
@@ -174,7 +174,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if log, err := device.Call_GetSystemLog(ctx, p.client, device.GetSystemLog{LogType: "System"}); err == nil {
 			out.SystemLog = &log.SystemLog.String
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetSystemLog").Str("type", "system").Msg("device")
+			rpcFailure(p.client, err, "GetSystemLog").Str("type", "system").Msg("device")
 		}
 	})
 
@@ -182,7 +182,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if log, err := device.Call_GetSystemLog(ctx, p.client, device.GetSystemLog{LogType: "Access"}); err == nil {
 			out.AccessLog = &log.SystemLog.String
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetSystemLog").Str("type", "access").Msg("device")
+			rpcFailure(p.client, err, "GetSystemLog").Str("type", "access").Msg("device")
 		}
 	})
 
@@ -190,7 +190,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if dm, err := device.Call_GetDiscoveryMode(ctx, p.client, device.GetDiscoveryMode{}); err == nil {
 			out.DiscoveryMode = string(dm.DiscoveryMode)
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDiscoveryMode").Msg("device")
+			rpcFailure(p.client, err, "GetDiscoveryMode").Msg("device")
 		}
 	})
 
@@ -198,7 +198,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if dm, err := device.Call_GetRemoteDiscoveryMode(ctx, p.client, device.GetRemoteDiscoveryMode{}); err == nil {
 			out.RemoteDiscoveryMode = string(dm.RemoteDiscoveryMode)
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetRemoteDiscoveryMode").Msg("device")
+			rpcFailure(p.client, err, "GetRemoteDiscoveryMode").Msg("device")
 		}
 	})
 
@@ -206,7 +206,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if hi, err := device.Call_GetHostname(ctx, p.client, device.GetHostname{}); err == nil {
 			out.Hostname = &hi.HostnameInformation
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetHostname").Msg("device")
+			rpcFailure(p.client, err, "GetHostname").Msg("device")
 		}
 	})
 
@@ -214,7 +214,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if uris, err := device.Call_GetSystemUris(ctx, p.client, device.GetSystemUris{}); err == nil {
 			out.SystemUris = &uris
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetSystemUris").Msg("device")
+			rpcFailure(p.client, err, "GetSystemUris").Msg("device")
 		}
 	})
 
@@ -222,7 +222,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if si, err := device.Call_GetSystemSupportInformation(ctx, p.client, device.GetSystemSupportInformation{}); err == nil {
 			out.SupportInformation = si.SupportInformation.String
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetSystemSupportInformation").Msg("device")
+			rpcFailure(p.client, err, "GetSystemSupportInformation").Msg("device")
 		}
 	})
 
@@ -230,7 +230,7 @@ func (p *ProfileS) FetchDeviceSystem(ctx context.Context) DeviceSystem {
 		if configs, err := device.Call_GetStorageConfigurations(ctx, p.client, device.GetStorageConfigurations{}); err == nil {
 			out.StorageConfigurations = configs.StorageConfigurations
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetStorageConfigurations").Msg("device")
+			rpcFailure(p.client, err, "GetStorageConfigurations").Msg("device")
 		}
 	})
 
@@ -247,7 +247,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 		if ru, err := device.Call_GetRemoteUser(ctx, p.client, device.GetRemoteUser{}); err == nil {
 			out.RemoteUser = &ru.RemoteUser
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetRemoteUser").Msg("device")
+			rpcFailure(p.client, err, "GetRemoteUser").Msg("device")
 		}
 	})
 
@@ -255,7 +255,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 		if users, err := device.Call_GetUsers(ctx, p.client, device.GetUsers{}); err == nil {
 			out.Users = users.User
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetUsers").Msg("device")
+			rpcFailure(p.client, err, "GetUsers").Msg("device")
 		}
 	})
 
@@ -263,7 +263,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 		if ap, err := device.Call_GetAccessPolicy(ctx, p.client, device.GetAccessPolicy{}); err == nil {
 			out.AccessPolicy = &ap.PolicyFile
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetAccessPolicy").Msg("device")
+			rpcFailure(p.client, err, "GetAccessPolicy").Msg("device")
 		}
 	})
 
@@ -275,7 +275,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 				out.NvtCertificate = append(out.NvtCertificate, latest)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCertificates").Msg("device")
+			rpcFailure(p.client, err, "GetCertificates").Msg("device")
 		}
 	})
 
@@ -283,7 +283,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 		if cs, err := device.Call_GetCertificatesStatus(ctx, p.client, device.GetCertificatesStatus{}); err == nil {
 			out.CertificateStatus = cs.CertificateStatus
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCertificatesStatus").Msg("device")
+			rpcFailure(p.client, err, "GetCertificatesStatus").Msg("device")
 		}
 	})
 
@@ -292,7 +292,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 			enabled := bool(cs.Enabled)
 			out.ClientCertificateMode = &enabled
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetClientCertificateMode").Msg("device")
+			rpcFailure(p.client, err, "GetClientCertificateMode").Msg("device")
 		}
 	})
 
@@ -304,7 +304,7 @@ func (p *ProfileS) FetchDeviceSecurity(ctx context.Context) DeviceSecurity {
 				out.CACertificate = append(out.CACertificate, latest)
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetCACertificates").Msg("device")
+			rpcFailure(p.client, err, "GetCACertificates").Msg("device")
 		}
 	})
 
@@ -324,7 +324,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if dpa, err := device.Call_GetDPAddresses(ctx, p.client, device.GetDPAddresses{}); err == nil {
 			out.DPAddress = dpa.DPAddress
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDPAddresses").Msg("device")
+			rpcFailure(p.client, err, "GetDPAddresses").Msg("device")
 		}
 	})
 
@@ -332,7 +332,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if dns, err := device.Call_GetDNS(ctx, p.client, device.GetDNS{}); err == nil {
 			out.DNS = &dns.DNSInformation
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDNS").Msg("device")
+			rpcFailure(p.client, err, "GetDNS").Msg("device")
 		}
 	})
 
@@ -340,7 +340,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if ddns, err := device.Call_GetDynamicDNS(ctx, p.client, device.GetDynamicDNS{}); err == nil {
 			out.DynDNS = &ddns.DynamicDNSInformation
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDynamicDNS").Msg("device")
+			rpcFailure(p.client, err, "GetDynamicDNS").Msg("device")
 		}
 	})
 
@@ -348,7 +348,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if ntp, err := device.Call_GetNTP(ctx, p.client, device.GetNTP{}); err == nil {
 			out.NTP = &ntp.NTPInformation
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetNTP").Msg("device")
+			rpcFailure(p.client, err, "GetNTP").Msg("device")
 		}
 	})
 
@@ -360,7 +360,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 				out.NICs[latest.NetworkInterface.Token] = latest
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetNetworkInterfaces").Msg("device")
+			rpcFailure(p.client, err, "GetNetworkInterfaces").Msg("device")
 		}
 	})
 
@@ -368,7 +368,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if protos, err := device.Call_GetNetworkProtocols(ctx, p.client, device.GetNetworkProtocols{}); err == nil {
 			out.NetworkProtocols = protos.NetworkProtocols
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetNetworkProtocols").Msg("device")
+			rpcFailure(p.client, err, "GetNetworkProtocols").Msg("device")
 		}
 	})
 
@@ -376,7 +376,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if dgw, err := device.Call_GetNetworkDefaultGateway(ctx, p.client, device.GetNetworkDefaultGateway{}); err == nil {
 			out.NetworkGateway = &dgw.NetworkGateway
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetNetworkDefaultGateway").Msg("device")
+			rpcFailure(p.client, err, "GetNetworkDefaultGateway").Msg("device")
 		}
 	})
 
@@ -384,7 +384,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if zc, err := device.Call_GetZeroConfiguration(ctx, p.client, device.GetZeroConfiguration{}); err == nil {
 			out.ZeroConfiguration = &zc.ZeroConfiguration
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetZeroConfiguration").Msg("device")
+			rpcFailure(p.client, err, "GetZeroConfiguration").Msg("device")
 		}
 	})
 
@@ -392,7 +392,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if iaf, err := device.Call_GetIPAddressFilter(ctx, p.client, device.GetIPAddressFilter{}); err == nil {
 			out.IPAddressFilter = &iaf.IPAddressFilter
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetIPAddressFilter").Msg("device")
+			rpcFailure(p.client, err, "GetIPAddressFilter").Msg("device")
 		}
 	})
 
@@ -400,7 +400,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 		if cs, err := device.Call_GetRelayOutputs(ctx, p.client, device.GetRelayOutputs{}); err == nil {
 			out.RelayOutputs = cs.RelayOutputs
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetRelayOutputs").Msg("device")
+			rpcFailure(p.client, err, "GetRelayOutputs").Msg("device")
 		}
 	})
 
@@ -411,7 +411,7 @@ func (p *ProfileS) FetchDeviceNetwork(ctx context.Context) DeviceNetwork {
 				out.Dot1XConfiguration[cfg.Dot1XConfigurationToken] = &cfgCopy
 			}
 		} else {
-			Logger.Trace().Err(err).Str("rpc", "GetDot1XConfigurations").Msg("device")
+			rpcFailure(p.client, err, "GetDot1XConfigurations").Msg("device")
 		}
 	})
 
@@ -427,12 +427,12 @@ func (p *ProfileS) loadCertificate(ctx context.Context, out *CertificateX) {
 	if cs, err := device.Call_GetPkcs10Request(ctx, p.client, device.GetPkcs10Request{CertificateID: out.Certificate.CertificateID}); err == nil {
 		out.Pkcs10Response = cs.Pkcs10Request
 	} else {
-		Logger.Trace().Err(err).Str("rpc", "GetPkcs10Request").Msg("device")
+		rpcFailure(p.client, err, "GetPkcs10Request").Msg("device")
 	}
 
 	if cs, err := device.Call_GetCertificateInformation(ctx, p.client, device.GetCertificateInformation{CertificateID: out.Certificate.CertificateID}); err == nil {
 		out.Information = cs.CertificateInformation
 	} else {
-		Logger.Trace().Err(err).Str("rpc", "GetCertificateInformation").Msg("device")
+		rpcFailure(p.client, err, "GetCertificateInformation").Msg("device")
 	}
 }

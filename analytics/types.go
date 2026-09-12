@@ -9,8 +9,8 @@
 package analytics
 
 import (
-	"github.com/jfsmig/onvif/xsd"
-	"github.com/jfsmig/onvif/xsd/onvif"
+	"github.com/jfsmig/onvif/v2/xsd"
+	"github.com/jfsmig/onvif/v2/xsd/onvif"
 )
 
 type GetSupportedRules struct {

@@ -19,7 +19,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jfsmig/onvif/networking"
+	"github.com/jfsmig/onvif/v2/networking"
 )
 
 const (

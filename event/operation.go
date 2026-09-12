@@ -9,7 +9,7 @@
 package event
 
 import (
-	"github.com/jfsmig/onvif/xsd"
+	"github.com/jfsmig/onvif/v2/xsd"
 )
 
 // GetServiceCapabilities action

@@ -146,7 +146,7 @@ do the `xsd/onvif/*.xsd` schemas. Do not add headers to them and do not edit the
   package clause, and `scripts/repo-check.sh` fails the build for the mismatch. `Imaging/`
   held `package imaging` for years, which silently made that package ungeneratable.
 
-- **The module is `github.com/jfsmig/onvif/v2`, and the major version is part of every
+- **The module is `github.com/ontavu/onvif/v2`, and the major version is part of every
   import path.** It is written in five kinds of place rather than one: `go.mod`, every
   import, the `//go:generate` lines that `go run` the generator, the two templates that
   *write* imports — `mainTemplate` in `bin/onvif-codegen/sdk.go`, and
@@ -156,7 +156,7 @@ do the `xsd/onvif/*.xsd` schemas. Do not add headers to them and do not edit the
   `go generate` writes the old path into the new tree, which CircleCI reports as two hundred
   files of unexplained diff. `README.md` is the one that fails silently, because a dead
   import path in prose breaks no build at all. Both are mechanical, so
-  `scripts/repo-check.sh` decides them: every `github.com/jfsmig/onvif…` in a `.go` file, and
+  `scripts/repo-check.sh` decides them: every `github.com/ontavu/onvif…` in a `.go` file, and
   every one in the three shapes of the README that are certainly import paths, must be under
   the path `go.mod` declares. Routing is not affected by the suffix — `methodEndpoint` takes
   the *last* segment of `PkgPath`, which is still `device`, and `sdk/routing_test.go` derives

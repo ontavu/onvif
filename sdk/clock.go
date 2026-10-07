@@ -7,7 +7,7 @@ package sdk
 import (
 	"time"
 
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 // deviceClockOffset returns deviceUTC - local, or zero when the device reported no usable

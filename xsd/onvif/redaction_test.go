@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jfsmig/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd"
 )
 
 // onvif-cli JSON-encodes these structs straight to stdout, so a device that returns a

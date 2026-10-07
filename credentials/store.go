@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/networking"
 )
 
 // SubDir is the directory, under a base directory, that holds the credential files.

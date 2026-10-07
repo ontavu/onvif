@@ -25,8 +25,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 // replyDelay is what makes concurrency observable: long enough that a sequential run is

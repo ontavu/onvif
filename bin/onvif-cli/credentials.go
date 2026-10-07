@@ -8,8 +8,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/jfsmig/onvif/v2/credentials"
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/credentials"
+	"github.com/ontavu/onvif/v2/networking"
 )
 
 // The base directories searched when neither --basedir nor ONVIF_BASEDIR names one. The

@@ -8,8 +8,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/jfsmig/onvif/v2/ptz"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/ptz"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 type Ptz struct {

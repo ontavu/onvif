@@ -22,8 +22,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/sdk"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/sdk"
 )
 
 // A fixed instant, so the rendering is a golden line rather than a clock read.

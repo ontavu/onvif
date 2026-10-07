@@ -14,7 +14,7 @@ import (
 	"testing"
 	"testing/fstest"
 
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/networking"
 )
 
 var blanket = networking.ClientAuth{Username: "fleet", Password: "fleet-password"}

@@ -9,11 +9,11 @@
 package event
 
 import (
-	"github.com/jfsmig/onvif/v2/xsd"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
-//go:generate go run github.com/jfsmig/onvif/v2/bin/onvif-codegen sdk event calls.txt
+//go:generate go run github.com/ontavu/onvif/v2/bin/onvif-codegen sdk event calls.txt
 
 // Address Alias
 type Address xsd.String

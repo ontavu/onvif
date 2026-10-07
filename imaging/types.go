@@ -9,8 +9,8 @@
 package imaging
 
 import (
-	"github.com/jfsmig/onvif/v2/xsd"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 type GetServiceCapabilities struct {

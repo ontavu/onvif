@@ -13,8 +13,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/credentials"
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/credentials"
+	"github.com/ontavu/onvif/v2/networking"
 	"github.com/rs/zerolog"
 	"github.com/spf13/cobra"
 )

@@ -8,7 +8,7 @@ package ptz
 
 import (
 	"context"
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/networking"
 )
 
 // Call_GotoHomePosition forwards the call to dev.CallMethod() then parses the payload of the reply as a GotoHomePositionResponse.

@@ -9,11 +9,11 @@ package sdk
 import (
 	"context"
 
-	"github.com/jfsmig/onvif/v2/device"
-	"github.com/jfsmig/onvif/v2/event"
-	"github.com/jfsmig/onvif/v2/media"
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/ptz"
+	"github.com/ontavu/onvif/v2/device"
+	"github.com/ontavu/onvif/v2/event"
+	"github.com/ontavu/onvif/v2/media"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/ptz"
 )
 
 // ProfileS offers the operations that the ONVIF Profile S specification lists for

@@ -12,8 +12,8 @@ import (
 	"os"
 	"sync"
 
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/sdk"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/sdk"
 	"github.com/spf13/cobra"
 )
 

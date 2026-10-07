@@ -12,9 +12,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/ptz"
-	"github.com/jfsmig/onvif/v2/utils"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/ptz"
+	"github.com/ontavu/onvif/v2/utils"
 )
 
 // stubAppliance stands up a device answering GetSystemDateAndTime and GetCapabilities,

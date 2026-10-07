@@ -8,7 +8,7 @@ package device
 
 import (
 	"context"
-	"github.com/jfsmig/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/networking"
 )
 
 // Call_GetDPAddresses forwards the call to dev.CallMethod() then parses the payload of the reply as a GetDPAddressesResponse.

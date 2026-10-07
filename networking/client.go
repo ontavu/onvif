@@ -32,7 +32,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/utils"
+	"github.com/ontavu/onvif/v2/utils"
 )
 
 // DefaultTimeout bounds a single SOAP exchange on the client NewClient builds for itself.

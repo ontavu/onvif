@@ -21,7 +21,7 @@ import (
 	"encoding/xml"
 	"testing"
 
-	"github.com/jfsmig/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd"
 )
 
 // TestSystemDateTimeUnmarshalsTheStructuredUTCDateTime feeds the shape a real camera

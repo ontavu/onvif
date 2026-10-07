@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/utils"
+	"github.com/ontavu/onvif/v2/utils"
 )
 
 // reply performs one exchange against a handler and hands back the live response, so the

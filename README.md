@@ -1,7 +1,7 @@
 # Go OnVif Client
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/jfsmig/onvif/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/jfsmig/onvif/tree/master)
-[![CodeQL](https://github.com/jfsmig/onvif/actions/workflows/codeql.yml/badge.svg)](https://github.com/jfsmig/onvif/actions/workflows/codeql.yml)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ontavu/onvif/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/ontavu/onvif/tree/master)
+[![CodeQL](https://github.com/ontavu/onvif/actions/workflows/codeql.yml/badge.svg)](https://github.com/ontavu/onvif/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Simple management IP-devices cameras that honor the [ONVIF Protocol](https://www.onvif.org/) protocol.
@@ -9,8 +9,8 @@ Simple management IP-devices cameras that honor the [ONVIF Protocol](https://www
 The present repository is a fork of [goonvif](https://github.com/use-go/goonvif) that quickly evolved. 
 Because of the need for quickly merged changes, the link to the upstream has been cut.
 
-The module is `github.com/jfsmig/onvif/v2`: imports carry the major version, as in
-`import "github.com/jfsmig/onvif/v2/sdk"`. Coming from v1, read
+The module is `github.com/ontavu/onvif/v2`: imports carry the major version, as in
+`import "github.com/ontavu/onvif/v2/sdk"`. Coming from v1, read
 [Migrating from v1](#migrating-from-v1) first — two packages left the module.
 
 ## CLI tools
@@ -217,18 +217,18 @@ Two consequences worth knowing:
 ## SDK
 
 A High Level go package aims at fetching information from the devices:
-- [github.com/jfsmig/onvif/v2/sdk](https://pkg.go.dev/github.com/jfsmig/onvif/v2/sdk)
+- [github.com/ontavu/onvif/v2/sdk](https://pkg.go.dev/github.com/ontavu/onvif/v2/sdk)
 
 Low-Level go packages implement the OnVIF unitary SOAP calls. For each call :
-- [github.com/jfsmig/onvif/v2/device](https://pkg.go.dev/github.com/jfsmig/onvif/v2/device)
-- [github.com/jfsmig/onvif/v2/event](https://pkg.go.dev/github.com/jfsmig/onvif/v2/event)
-- [github.com/jfsmig/onvif/v2/ptz](https://pkg.go.dev/github.com/jfsmig/onvif/v2/ptz)
-- [github.com/jfsmig/onvif/v2/media](https://pkg.go.dev/github.com/jfsmig/onvif/v2/media)
+- [github.com/ontavu/onvif/v2/device](https://pkg.go.dev/github.com/ontavu/onvif/v2/device)
+- [github.com/ontavu/onvif/v2/event](https://pkg.go.dev/github.com/ontavu/onvif/v2/event)
+- [github.com/ontavu/onvif/v2/ptz](https://pkg.go.dev/github.com/ontavu/onvif/v2/ptz)
+- [github.com/ontavu/onvif/v2/media](https://pkg.go.dev/github.com/ontavu/onvif/v2/media)
 
 Two more packages carry the request and reply **types only** — they have no `calls.txt` and
 so no `Call_*` wrappers, which means their operations cannot be issued yet:
-- [github.com/jfsmig/onvif/v2/imaging](https://pkg.go.dev/github.com/jfsmig/onvif/v2/imaging)
-- [github.com/jfsmig/onvif/v2/analytics](https://pkg.go.dev/github.com/jfsmig/onvif/v2/analytics)
+- [github.com/ontavu/onvif/v2/imaging](https://pkg.go.dev/github.com/ontavu/onvif/v2/imaging)
+- [github.com/ontavu/onvif/v2/analytics](https://pkg.go.dev/github.com/ontavu/onvif/v2/analytics)
 
 `imaging` and `analytics` are already among the service names `networking` will route, so
 what is missing is the wrappers rather than the plumbing.
@@ -241,7 +241,7 @@ what is missing is the wrappers rather than the plumbing.
 > coming from v1 fixes the import path and nothing else.
 
 Helpers:
-- [github.com/jfsmig/onvif/v2/credentials](https://pkg.go.dev/github.com/jfsmig/onvif/v2/credentials)
+- [github.com/ontavu/onvif/v2/credentials](https://pkg.go.dev/github.com/ontavu/onvif/v2/credentials)
   answers "which credentials for the camera bearing this identifier?". `credentials.Resolver`
   is the interface; a `Store` reads the `*.json` files described above, `Static` is a blanket
   credential, and `Chain` states the precedence between them. An application that already
@@ -249,7 +249,7 @@ Helpers:
   implements the interface and keeps the rest of the tool unchanged. `Resolve` answers from
   memory and cannot fail, so a source that does I/O per lookup belongs behind a type that
   loads eagerly, as `Store` does
-- [github.com/jfsmig/onvif/v2/networking](https://pkg.go.dev/github.com/jfsmig/onvif/v2/networking)
+- [github.com/ontavu/onvif/v2/networking](https://pkg.go.dev/github.com/ontavu/onvif/v2/networking)
   implements the low-level SOAP connectivity
 - [github.com/jfsmig/go-wsd/wsd](https://pkg.go.dev/github.com/jfsmig/go-wsd/wsd)
   implements the probing of the LAN network interfaces, which `onvif/ws-discovery` did in v1.
@@ -257,19 +257,23 @@ Helpers:
 
 ### Migrating from v1
 
-The module declares a major version, so the import path carries it:
+The module declares a major version, and the repository has moved to the `ontavu`
+organisation since v1 was published, so the import path changes twice — in its owner and in
+its major version:
 
 ```console
-go get github.com/jfsmig/onvif/v2
+go get github.com/ontavu/onvif/v2
 ```
 
 ```go
-import "github.com/jfsmig/onvif/v2/sdk"
+import "github.com/ontavu/onvif/v2/sdk"
 ```
 
-The v1 path `github.com/jfsmig/onvif` still resolves, to the `v1.1.0` tag, and stays where
-it is. Go treats the two as different modules, so nothing here moves an existing importer
-and nothing forces an upgrade.
+The tags published before the move — `v1.1.0`, `v2.0.0` and `v2.0.1` — declare the path of
+the former owner in their `go.mod`, so they still resolve under that path, and only under it,
+and stay where they are. Go treats each path as a different module, so nothing here moves an
+existing importer and nothing forces an upgrade. An importer already on `v2.0.1` changes the
+owner in its import paths and nothing else.
 
 What broke, heaviest first:
 

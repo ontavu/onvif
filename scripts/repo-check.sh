@@ -274,9 +274,9 @@ check_package_dirs() {
 #
 # Inside a .go file every occurrence is an import path, a //go:generate argument, or a
 # template that writes one, so the whole file is scanned. README.md is not: it also names
-# the repository in badge URLs, which are not import paths and must stay unversioned, and one
-# sentence deliberately names the v1 path. So only the three shapes there that are certainly
-# import paths are checked -- the pkg.go.dev links, the `go get` line, and the example import.
+# the repository in badge URLs, which are not import paths and must stay unversioned. So only
+# the three shapes there that are certainly import paths are checked -- the pkg.go.dev links,
+# the `go get` line, and the example import.
 # A stale path in a README breaks no build, which is exactly why it is the one that survives
 # a bump and sends a reader to a module that does not exist.
 #
@@ -289,12 +289,12 @@ check_module_path() {
   if [ -z "$module" ]; then
     fail "go.mod declares a module path"; return
   fi
-  out=$(gofiles | xargs grep -no 'github\.com/jfsmig/onvif[A-Za-z0-9_./-]*' 2>/dev/null \
+  out=$(gofiles | xargs grep -no 'github\.com/ontavu/onvif[A-Za-z0-9_./-]*' 2>/dev/null \
     | awk -v m="$module" -F: '{
         if ($3 != m && index($3, m "/") != 1)
           printf "  %s:%s: %s\n", $1, $2, $3
       }')
-  out=$out$(grep -noE '(pkg\.go\.dev/|go get |import ")github\.com/jfsmig/onvif[A-Za-z0-9_./-]*' README.md \
+  out=$out$(grep -noE '(pkg\.go\.dev/|go get |import ")github\.com/ontavu/onvif[A-Za-z0-9_./-]*' README.md \
     | sed -E 's#:(pkg\.go\.dev/|go get |import ")#:#' \
     | awk -v m="$module" -F: '{
         if ($2 != m && index($2, m "/") != 1)

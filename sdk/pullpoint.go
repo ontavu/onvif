@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jfsmig/onvif/v2/event"
-	"github.com/jfsmig/onvif/v2/xsd"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/event"
+	"github.com/ontavu/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 // ErrNoPullPoint reports a device that accepted the subscription without saying where it

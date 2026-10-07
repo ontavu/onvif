@@ -22,7 +22,7 @@ package main
 import (
 	"testing"
 
-	"github.com/jfsmig/onvif/v2/credentials"
+	"github.com/ontavu/onvif/v2/credentials"
 )
 
 const (

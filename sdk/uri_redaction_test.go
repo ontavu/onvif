@@ -25,9 +25,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jfsmig/onvif/v2/networking"
-	"github.com/jfsmig/onvif/v2/xsd"
-	"github.com/jfsmig/onvif/v2/xsd/onvif"
+	"github.com/ontavu/onvif/v2/networking"
+	"github.com/ontavu/onvif/v2/xsd"
+	"github.com/ontavu/onvif/v2/xsd/onvif"
 )
 
 const credentialedPassword = "s3cret"

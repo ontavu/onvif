@@ -3,7 +3,7 @@ module github.com/ontavu/onvif/v2
 go 1.26.7
 
 require (
-	github.com/beevik/etree v1.8.0
+	github.com/beevik/etree v1.8.1
 	github.com/ontavu/go-wsd/v2 v2.0.0
 	github.com/rs/zerolog v1.35.1
 	github.com/spf13/cobra v1.10.2

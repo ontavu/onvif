@@ -19,7 +19,7 @@ import (
 	"strings"
 
 	"github.com/beevik/etree"
-	"github.com/ontavu/go-wsd/gosoap"
+	"github.com/ontavu/go-wsd/v2/gosoap"
 	"github.com/ontavu/onvif/v2/utils"
 )
 

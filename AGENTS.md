@@ -23,7 +23,7 @@ Supporting packages: `xsd/` (XSD primitives and the generated ONVIF schema types
 bearing this identifier?", with a file-backed `Store`, a `Static` blanket and a `Chain`
 stating the precedence between them).
 
-Discovery is **not** in this repository. It lives in `github.com/ontavu/go-wsd`, which
+Discovery is **not** in this repository. It lives in `github.com/ontavu/go-wsd/v2`, which
 also provides the `gosoap` envelope builder this project uses.
 
 `bin/` is source, not build output: `bin/onvif-cli` is the CLI (`discover [-a]`,

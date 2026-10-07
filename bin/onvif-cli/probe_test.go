@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/jfsmig/go-wsd/wsd"
+	"github.com/ontavu/go-wsd/wsd"
 )
 
 // TestFanOutProbesKeepsOneProbePerInterface uses enough interfaces that a shared *itfProbe,

@@ -12,7 +12,7 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/jfsmig/go-wsd/wsd"
+	"github.com/ontavu/go-wsd/wsd"
 
 	"github.com/ontavu/onvif/v2/credentials"
 	"github.com/ontavu/onvif/v2/networking"

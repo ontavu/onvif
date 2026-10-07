@@ -23,7 +23,7 @@ against.
 ## Where the protocol actually lives
 
 The SOAP envelope and WS-Security are **not in this repository**. They are in the
-dependency `github.com/jfsmig/go-wsd/gosoap`: `NewEmptySOAP`, `AddBodyContent`,
+dependency `github.com/ontavu/go-wsd/gosoap`: `NewEmptySOAP`, `AddBodyContent`,
 `AddRootNamespaces`, `AddWSSecurity`, with PasswordDigest computed as
 `B64(SHA1(B64DEC(Nonce) + Created + Password))` over a crypto/rand nonce. The in-tree seam
 is `buildMethodSOAP` in `networking/networking.go`. **A defect in envelope construction or

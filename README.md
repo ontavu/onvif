@@ -251,7 +251,7 @@ Helpers:
   loads eagerly, as `Store` does
 - [github.com/ontavu/onvif/v2/networking](https://pkg.go.dev/github.com/ontavu/onvif/v2/networking)
   implements the low-level SOAP connectivity
-- [github.com/jfsmig/go-wsd/wsd](https://pkg.go.dev/github.com/jfsmig/go-wsd/wsd)
+- [github.com/ontavu/go-wsd/wsd](https://pkg.go.dev/github.com/ontavu/go-wsd/wsd)
   implements the probing of the LAN network interfaces, which `onvif/ws-discovery` did in v1.
   Please refer to the CLI tool `onvif-cli discover`
 
@@ -280,7 +280,7 @@ What broke, heaviest first:
 - **Two packages left the module rather than changing shape.** `onvif/gosoap`, the envelope
   builder — `SoapMessage`, `NewSOAP`, `AddWSSecurity` — and `onvif/ws-discovery`, with
   `GetAvailableDevicesAtSpecificEthernetInterface` and `SendProbe`, have no v2 equivalent
-  here. Both live in [github.com/jfsmig/go-wsd](https://pkg.go.dev/github.com/jfsmig/go-wsd),
+  here. Both live in [github.com/ontavu/go-wsd](https://pkg.go.dev/github.com/ontavu/go-wsd),
   as `…/go-wsd/gosoap` and `…/go-wsd/wsd`, and that is a **separate module**: an importer of
   either adds a `require` rather than editing a path, and `wsd` is a redesign, not a move.
 - **The SDK is grouped by ONVIF Profile.** `Appliance` no longer carries the `Fetch*`

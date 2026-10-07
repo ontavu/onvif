@@ -15,7 +15,7 @@ package main
 // what keeps "192.168.1.70" without a port working.
 //
 // Verified against ONVIF Core section 7.1, which overrides the "uuid:" recommendation of
-// WS-Discovery section 2.6 in favour of urn:uuid -- go-wsd cites it in wsd/parse.go:44 --
+// WS-Discovery section 2.6 in favour of urn:uuid -- go-wsd cites it in wsd/parse.go:33 --
 // against section 7.3.1, which makes that a "should" rather than a "shall" and so leaves
 // both spellings conformant, and against RFC 4122 section 3 for the case of the hex.
 

@@ -4,7 +4,7 @@ go 1.26.7
 
 require (
 	github.com/beevik/etree v1.8.0
-	github.com/jfsmig/go-wsd v1.0.0
+	github.com/ontavu/go-wsd v0.0.0-20260912075204-a72148d6af65
 	github.com/rs/zerolog v1.35.1
 	github.com/spf13/cobra v1.10.2
 )

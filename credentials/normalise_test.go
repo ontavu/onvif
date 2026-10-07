@@ -6,7 +6,7 @@ package credentials
 
 // The identifier that keys a credentials file is whatever the device put in its
 // WS-Discovery EndpointReference/Address, and go-wsd copies that text verbatim
-// (wsd/parse.go:80). ONVIF Core section 7.1 mandates "urn:uuid:" -- "uuid:" is not a URI
+// (wsd/parse.go:69). ONVIF Core section 7.1 mandates "urn:uuid:" -- "uuid:" is not a URI
 // scheme -- overriding the recommendation of WS-Discovery section 2.6, and equipment ships
 // both; RFC 4122 section 3 makes the hex case-insensitive while cameras print it either
 // way.
